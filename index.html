@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flatstack frontend</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/app-icon.png">
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <header class="header">
+            <div class="container header__navbar">
+                <div class="header__navbar-logo">
+                    <img src="assets/icons/app-icon.svg" alt="">
+                    <span class="header__navbar-logo-text">
+                        Front-end Developer Test Task
+                    </span>
+                </div>
+                <div class="header__navbar-cart">
+                    <span class="header__navbar-cart-text">
+                        Cart
+                    </span>
+                    <div class="header__navbar-cart-item">
+                        <img src="assets/icons/cart-icon.svg" alt="">
+                        <div class="header__navbar-cart-counter">3</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container form-wrapper">
+            <div class="form-container">
+                <ul class="form-input--country-list" id="countryList"></ul>
+                <div id="shippingFormContainer" class="shipping-form" style="display: block;">
+                    <ul class="form-breadcrumbs">
+                        <li class="form-breadcrumbs__item form-breadcrumbs__item--active">Shipping</li>
+                        <li class="form-breadcrumbs__item">Billing</li>
+                        <li class="form-breadcrumbs__item">Payment</li>
+                    </ul>
+                    <form id="shippingForm" action="">
+                        <h2 class="form-header">Shipping Info</h2>
+                        <div class="form-group">
+                            <label for="" class="input-label">Recipient</label>
+                            <div class="input-wrapper">
+                                <div id="fullNameTooltip" class="tooltip">Please enter recipient full name</div>
+                                <input id="fullName" type="text" placeholder="Full Name" class="form-input">
+                            </div>
+                            <div class="input-wrapper input-wrapper--phone">
+                                <div id="phoneNumberTooltip" class="tooltip">Please enter contact phone number</div>
+                                <input id="phoneNumber" type="text" placeholder="Daytime Phone" class="form-input form-input--phone">
+                                <span class="form-input__comment">For delivery questions only</span>
+                            </div>
+                        </div>
+                        <div class="form-group form-group--address">
+                            <label for="" class="input-label">Address</label>
+                            <div class="input-wrapper">
+                                <div id="streetAddressTooltip" class="tooltip">Please enter Street Address</div>
+                                <input type="text" id="streetAddress" placeholder="Street Address" class="form-input">
+                            </div>
+                            <input type="text" placeholder="Apt, Suite, Bldg, Gate Code. (optional)" class="form-input">
+                            <div class="input-wrapper">
+                                <div id="inputCityTooltip" class="tooltip tooltip--city">Please select your city</div>
+                                <input type="text" placeholder="City" id="inputCity" class="form-input form-input--city">
+                            </div>
+                            <div class="input-wrapper input-wrapper--country">
+                                <div id="selectCountryTooltip" class="tooltip">Please select your country</div>
+                                <input type="text" id="selectCountry" placeholder="Country" class="form-input form-input--country">
+                            </div>
+                            <div class="input-wrapper input-wrapper--zipcode">
+                                <div id="zipCodeTooltip" class="tooltip tooltip--zipcode">Please enter your zipcode</div>
+                                <input type="text" id="zipCode" placeholder="ZIP" class="form-input form-input--zip">
+                            </div>
+                        </div>
+                        <button id="shippingFormButton" class="form-button">Continue</button>
+                    </form>
+                </div>
+                <div id="billingFormContainer" class="shipping-form billing-form" style="display: none;">
+                    <ul class="form-breadcrumbs">
+                        <li class="form-breadcrumbs__item">Shipping</li>
+                        <li class="form-breadcrumbs__item form-breadcrumbs__item--active">Billing</li>
+                        <li class="form-breadcrumbs__item">Payment</li>
+                    </ul>
+                    <form id="billingForm" action="">
+                        <h2 class="form-header form-header--billing">Billing Information</h2>
+                        <span id="fillBillingForm" class="fill-billing-form">Same as shipping</span>
+                        <div class="form-group--billing-contact">
+                            <label for="" class="input-label">Billing Contact</label>
+                            <div class="input-wrapper">
+                                <div id="billingFullNameTooltip" class="tooltip">Please enter recipient full name</div>
+                                <input id="billingFullName" type="text" placeholder="Full Name" class="form-input">
+                            </div>
+                            <div class="input-wrapper">
+                                <div id="billingEmailTooltip" class="tooltip">Please enter your email address</div>
+                                <input id="billingEmail" type="text" placeholder="Email Address" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group form-group--address">
+                            <label for="" class="input-label">Billing Address</label>
+                            <div class="input-wrapper">
+                                <div id="billingStreetAddressTooltip" class="tooltip">Please enter Street Address</div>
+                                <input type="text" id="billingStreetAddress" placeholder="Street Address" class="form-input">
+                            </div>
+                            <input type="text" placeholder="Apt, Suite, Bldg, Gate Code. (optional)" class="form-input">
+                            <div class="input-wrapper">
+                                <div id="billingInputCityTooltip" class="tooltip tooltip--city">Please select your city</div>
+                                <input type="text" placeholder="City" id="billingInputCity" class="form-input form-input--city">
+                            </div>
+                            <div class="input-wrapper input-wrapper--country">
+                                <div id="billingSelectCountryTooltip" class="tooltip">Please select your country</div>
+                                <input type="text" id="billingSelectCountry" placeholder="Country" class="form-input form-input--country">
+                            </div>
+                            <div class="input-wrapper input-wrapper--zipcode">
+                                <div id="billingZipCodeTooltip" class="tooltip tooltip--zipcode">Please enter your zipcode</div>
+                                <input type="text" id="billingZipCode" placeholder="ZIP" class="form-input form-input--zip">
+                            </div>
+                        </div>
+                        <button id="shippingFormButton" class="form-button">Continue</button>
+                    </form>
+                </div>
+                <div id="paymentForm" class="payment-form" style="display: none;">
+                    <ul class="form-breadcrumbs">
+                        <li class="form-breadcrumbs__item">Shipping</li>
+                        <li class="form-breadcrumbs__item">Billing</li>
+                        <li class="form-breadcrumbs__item form-breadcrumbs__item--active">Payment</li>
+                    </ul>
+                    <form action="">
+                        <h2 class="form-header">Payment</h2>
+                        <span class="form-subheader--ssl">This is a secure 128-bit SSL encrypted payment</span>
+                        <label for="cardholderName" class="input-label">Cardholder Name</label>
+                        <div class="input-wrapper">
+                            <div id="cardholderNameTooltip" class="tooltip">Please enter full name</div>
+                            <input id="cardholderName" type="text" placeholder="Full Name" class="form-input form-input--cardholder">
+                        </div>
+                        <label for="" class="input-label">Card Number</label>
+                        <div class="input-wrapper">
+                            <div id="cardnumberTooltip" class="tooltip">Please enter card number</div>
+                            <input type="text" id="cardnumber" placeholder="XXXX XXXX XXXX XXXX XXXX" class="form-input" maxlength="24">
+                        </div>
+                        <div class="form-group form-group__date-security">
+                            <div class="form-group__item--date">
+                                <label for="expiredDate" class="input-label">
+                                    Expired Date
+                                </label>
+                                <div class="input-wrapper">
+                                    <div id="expiredDateTooltip" class="tooltip tooltip--expired-date">Please enter date</div>
+                                    <input id="expiredDate" type="text" placeholder="MM/YY" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-group__item--security-code">
+                                <label for="securityCode" class="input-label">
+                                    Security Code
+                                </label>
+                                <div class="input-wrapper">
+                                    <div id="securityCodeTooltip" class="tooltip tooltip--security-code">Please enter security code</div>
+                                    <input id="securityCode" type="text" placeholder="" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="form-button form-button__pay-button">Pay Securely</button>
+                    </form>
+                </div>
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <h2 class="form-header form-header--success">Thank you for your order!</h2>
+                    <span class="success-message__order-number">Order number is: 188787788</span>
+                    <p class="success-message__message-text">
+                        You will recieve an email confirmation shortly to <a id="clientEmail" href="">youremail@email.com</a>
+                    </p>
+                    <p class="success-message__message-text">
+                        Estimated delivery Day is
+                        <br>
+                        <b>Friday 1st April 2016</b>
+                    </p>
+                    <span class="success-message__print">Print Receipt</span>
+                </div>
+            </div>
+            <div class="order-container">
+                <span class="order-edit">edit order</span>
+                <h3 class="order-container__header">Order Summary</h3>
+                <div class="order-container__items">
+                    <div class="order-container__item">
+                        <div class="order-container__item-image">
+                            <img src="assets/images/boots.png" alt="The Chelsea Boots">
+                        </div>
+                        <span class="order-container__item-price">$235</span>
+                        <span class="order-container__item-header">The Chelsea Boots</span>
+                        <span class="order-container__item-about">Black</span>
+                        <span class="order-container__item-about">Quantity: 1</span>
+                    </div>
+                    <div class="order-container__item">
+                        <div class="order-container__item-image">
+                            <img src="assets/images/bag.png" alt="The Chelsea Boots">
+                        </div>
+                        <span class="order-container__item-price">$65</span>
+                        <span class="order-container__item-header">The Twill Snap Backpack</span>
+                        <span class="order-container__item-about">Reverse Denim + Brown Leather</span>
+                        <span class="order-container__item-about">Quantity: 1</span>
+                    </div>
+                    <div class="order-container__item">
+                        <div class="order-container__item-image">
+                            <img src="assets/images/women-bag.png" alt="The Chelsea Boots">
+                        </div>
+                        <span class="order-container__item-price">$48</span>
+                        <span class="order-container__item-header">The Twill Zip Tote</span>
+                        <span class="order-container__item-about">Reverse Denim + Black Leather</span>
+                        <span class="order-container__item-about">Quantity: 1</span>
+                    </div>
+                </div>
+                <div class="order-container__total-info">
+                    <div class="order-container__total-info-line">
+                        <span class="order-container__total-info-item">Subtotal</span>
+                        <span class="order-container__total-info-item">$398</span>
+                    </div>
+                    <div class="order-container__total-info-line">
+                        <span class="order-container__total-info-item">Shipping</span>
+                        <span class="order-container__total-info-item">Free</span>
+                    </div>
+                    <div class="order-container__total-info-line">
+                        <span class="order-container__total-info-item">Taxes</span>
+                        <span class="order-container__total-info-item">$12.12</span>
+                    </div>
+                </div>
+                <div class="order-container__total-cost">
+                    <span class="order-container__total-cost-item">Total</span>
+                    <span class="order-container__total-cost-item">$410.12</span>
+                </div>
+            </div>
+            <span class="order-container__terms">
+                All purchases are sobject to our <a href="">Terms and Conditions</a>
+            </span>
+        </div>
+    </div>
+    <script src="scripts/countries.js"></script>
+    <script src="scripts/shipping-form.js"></script>
+    <script src="scripts/billing-form.js"></script>
+    <script src="scripts/payment-form.js"></script>
+</body>
+
+</html>
